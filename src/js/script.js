@@ -74,7 +74,7 @@ function initMap() {
 function setMarker(data, event) {
   var context = ko.contextFor(event.target);
   var index = context.$index();
-  var location = locations()[index];
+  var location = locations[index];
   infoWindow.setContent('<h6>' + location.name + '</h6>' + '<p>' + location.vicinity + '</p>');
   infoWindow.open(map, location.marker);
   location.marker.setAnimation(google.maps.Animation.BOUNCE);
