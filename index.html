@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Raymond's Neighborhood Map</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha256-gvEnj2axkqIj4wbYhPjbWV7zttgpzBVEgHub9AAZQD4=" crossorigin="anonymous" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -14,24 +15,22 @@
 
 <body>
   <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" id="menu-toggle" >
+<!--       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">Raymond's Neighborhood Map</a>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" data-bind="value: query, valueUpdate: 'keyup'" placeholder="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
   </nav>
   <div id="wrapper">
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" data-bind="value: query, valueUpdate: 'keyup'" placeholder="Search">
+          </form>
+        </li>
+      </ul>
       <ul class="sidebar-nav" data-bind="foreach:locations">
         <li class="sidebar-brand" data-bind="click: setMarker">
           <a href="#"><span data-bind="text: name"></span>
@@ -46,7 +45,7 @@
   </div>
 
   <script src="./src/js/script.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-dWsYTg2apb_HbgHQwPwPN9o7Y64ekKc&libraries=places&callback=initMap" type="text/javascript"></script>
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-dWsYTg2apb_HbgHQwPwPN9o7Y64ekKc&libraries=places&callback=initMap" onerror="googleAPIError()" type="text/javascript"></script>
   <link rel="stylesheet" type="text/css" href="./src/css/style.css" />
 </body>
 

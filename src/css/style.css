@@ -9,6 +9,7 @@ body {
 }
 
 #wrapper {
+  padding-top: 54px;
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -23,7 +24,6 @@ body {
   height: 100%;
   overflow-y: auto;
   background: #000;
-  padding-top: 54px;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -52,7 +52,6 @@ body {
 }
 
 .sidebar-nav li {
-  text-indent: 20px;
   line-height: 40px;
 }
 
@@ -74,11 +73,12 @@ body {
 }
 
 .sidebar-nav>.sidebar-brand {
-  height: 65px;
   font-size: 18px;
-  line-height: 60px;
+  padding: 5px 20px;
 }
-
+.form-inline .form-control {
+  width: 100%;
+}
 .sidebar-nav>.sidebar-brand a {
   color: #999999;
 }
@@ -91,7 +91,9 @@ body {
 #wrapper.toggled #sidebar-wrapper {
   width: 250px;
 }
-
+.navbar-toggleable-md .navbar-toggler {
+  display: initial;
+}
 @media(min-width:768px) {
   #wrapper {
     padding-left: 0;
