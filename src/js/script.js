@@ -107,7 +107,7 @@ function initMap() {
 }
 
 function foursquareAPIError() {
-  console.log('Something went wrong with Foursquare\'s API. Please try again later');
+  alert('Something went wrong with Foursquare\'s API. Please try again later');
 }
 
 function googleAPIError() {
@@ -143,8 +143,8 @@ $(document).ready(function() {
 
     getPlaceInformation(url).then(function(result) {
       let venue = result.response.venues[0];
-      location.formattedAddress = venue.location.formattedAddress;
-      location.formattedNumber = venue.contact.formattedPhone;
+      location.formattedAddress = venue.location.formattedAddress || 'Address not available';
+      location.formattedNumber = venue.contact.formattedPhone || 'Phone number not available';
       infoWindow.setContent('<h6>' + location.name + '</h6>' + '<p>' + location.formattedAddress.join('<br/>') + '</p>' + '<p>' + location.formattedNumber + '</p>');
       infoWindow.open(map, location.marker);
     }, foursquareAPIError);
@@ -155,8 +155,10 @@ $(document).ready(function() {
   viewModel.search = function(value) {
     viewModel.locations.removeAll();
     for (var location in locations) {
+      locations[location].marker.setMap(null);
       if (typeof value === 'undefined' || locations[location].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
         viewModel.locations.push(locations[location]);
+        locations[location].marker.setMap(map);
       }
     }
 
