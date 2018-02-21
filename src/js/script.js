@@ -123,10 +123,14 @@ $(document).ready(function() {
 
 
 
-  viewModel.setMarker = function(data, event) {
-    var context = ko.contextFor(event.target);
-    var index = context.$index();
-    var location = locations[index];
+  viewModel.setMarker = function(data) {
+    let location = {};
+    for(let i = 0; i < locations.length; i++) {
+      if(data.id === locations[i].id) {
+        location = locations[i];
+      }
+    }
+
     let url = generateSearchUrl({
       name: location.name,
       lat: location.geometry.location.lat(),
